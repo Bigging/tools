@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.dao.BlackPhoneListMapper">
+  <resultMap id="BaseResultMap" type="org.example.dao.entity.BlackPhoneList">
+    <id column="temporary_id" jdbcType="BIGINT" property="temporaryId" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" typeHandler="org.example.config.handler.CommonStrTypeHandler"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    temporary_id, phone
+  </sql>
+  <select id="selectByCursor" resultMap="BaseResultMap" fetchSize="-2147483648">
+    select
+    <include refid="Base_Column_List" />
+    from black_phone_list
+    <where>
+      <if test="temporaryId != null">
+        temporary_id > #{temporaryId,jdbcType=BIGINT}
+      </if>
+    </where>
+    order by temporary_id
+  </select>
+
+  <update id="updateByPrimaryKeyBatch">
+    <foreach collection="record" item="item" index="index" close="" separator=";">
+      UPDATE black_phone_list
+      <set>
+        temporary_id = #{item.temporaryId,jdbcType=BIGINT},
+        <if test="item.phone != null">
+          phone = #{item.phone,jdbcType=VARCHAR,typeHandler=org.example.config.handler.CommonStrTypeHandler},
+        </if>
+      </set>
+      <where>
+        temporary_id = #{item.temporaryId,jdbcType=BIGINT}
+      </where>
+    </foreach>
+  </update>
+</mapper>

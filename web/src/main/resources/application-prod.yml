@@ -1,0 +1,21 @@
+logging:
+  config: classpath:log4j2-prod.xml
+  level:
+    org.example: INFO
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://xx.xx.xx.xx:xxxx/test?useUnicode=true&characterEncoding=UTF8&useSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true&rewriteBatchedStatements=true&useAffectedRows=true&useCursorFetch=true
+    username: admin
+    password: ddd
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 60000
+      keepaliveTime: 75000
+      max-lifetime: 120000
+      minimum-idle: 2
+      maximum-pool-size: 20
+      pool-name: HikariCP
+      connection-test-query: SELECT 1

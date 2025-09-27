@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通用工具项目</title>
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css"/>
+    <script th:src="@{/js/jquery-3.7.1.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/index.js}" type="text/javascript"></script>
+</head>
+<body>
+<table class="style-table">
+    <tr>
+        <td>数据库表名（中文）</td>
+        <td>数据库表名（英文）</td>
+        <td>起始ID</td>
+        <td>执行操作</td>
+    </tr>
+    <tr>
+        <td>电话黑名单表</td>
+        <td>black_phone_list</td>
+        <td>
+            <label>
+                <input id="black_phone_list_input" type="text" placeholder="主键ID"/>
+            </label>
+        </td>
+        <td><button onclick="black_phone_list_update()" type="button">刷新数据</button></td>
+    </tr>
+</table>
+</body>
+</html>

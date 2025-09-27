@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <properties>
+        <property name="logDir">/data/logs/pro/tools</property>
+        <property name="fileName">tools</property>
+    </properties>
+
+    <Appenders>
+        <RollingRandomAccessFile name="File" fileName="${logDir}/${fileName}.log"
+                                 filePattern="${logDir}/${fileName}-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="%d %-5p [%t] %l - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="20">
+                <Delete basePath="${logDir}/" maxDepth="2">
+                    <IfLastModified age="1d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+</Configuration>

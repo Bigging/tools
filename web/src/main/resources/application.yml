@@ -1,0 +1,26 @@
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8090
+  servlet:
+    context-path: /web
+
+spring:
+  application:
+    name: tools-web
+  messages:
+    encoding: utf-8
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+  # dev|test|pro
+  profiles:
+    active: test
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+
