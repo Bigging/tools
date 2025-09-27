@@ -26,7 +26,6 @@ public class ClassUtil {
                 }
             });
             return method.invoke(obj);
-//            return obj.getClass().getMethod(methodName).invoke(obj);
         } catch (Exception e) {
             throw new RuntimeException("执行异常，字段解析失败", e);
         }
