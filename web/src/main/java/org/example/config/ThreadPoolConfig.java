@@ -18,7 +18,7 @@ public class ThreadPoolConfig {
         if (PC_CORES >= 10)
             PC_CORES = 20;
         else
-            PC_CORES = PC_CORES << 1 + 1;
+            PC_CORES = (PC_CORES << 1) + 1;
     }
 
     /**
